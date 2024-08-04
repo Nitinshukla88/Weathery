@@ -1,5 +1,6 @@
 let button = document.getElementsByTagName("button");
 let form = document.getElementsByTagName("input");
+let msg = document.querySelector(".processing");
 
 
 const options = {
@@ -15,6 +16,11 @@ button[0].addEventListener("click", function () {
     const url =
     `https://weatherapi-com.p.rapidapi.com/current.json?q=${city}%20`;
     get(url);
+    let parentdiv = document.querySelector(".weatherdetails");
+    let loadingdiv = document.createElement("div");
+    loadingdiv.classList.add("loading");
+    parentdiv.appendChild(loadingdiv);
+    msg.style.color = "white";
   });
 
 async function get(url) {
