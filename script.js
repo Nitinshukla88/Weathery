@@ -1,6 +1,5 @@
 let button = document.getElementsByTagName("button");
 let form = document.getElementsByTagName("input");
-let msg = document.querySelector(".processing");
 
 
 const options = {
@@ -18,9 +17,12 @@ button[0].addEventListener("click", function () {
     get(url);
     let parentdiv = document.querySelector(".weatherdetails");
     let loadingdiv = document.createElement("div");
+    let status = document.createElement("div");
+    status.innerHTML = "Processing...";
+    status.classList.add("processing");
+    parentdiv.appendChild(status)
     loadingdiv.classList.add("loading");
     parentdiv.appendChild(loadingdiv);
-    msg.style.color = "white";
   });
 
 async function get(url) {
@@ -29,7 +31,15 @@ async function get(url) {
     const result = await response.text();
     const data = JSON.parse(result);
     console.log(data);
-    console.log(data.current.temp_c);
+    console.log(data.current.cloud);    
+    console.log(data.current.condition.text);    
+    console.log(data.current.dewpoint_c);    
+    console.log(data.current.gust_mph);    
+    console.log(data.current.heatindex_c);    
+    console.log(data.current.humidity);    
+    console.log(data.current.temp_c);    
+    console.log(data.current.precip_mm);    
+    console.log(data.current.wind_mph);    
   } catch (error) {
     console.error(error);
   }

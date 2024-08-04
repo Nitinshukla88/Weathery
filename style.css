@@ -14,7 +14,7 @@ body {
 }
 
 nav {
-  height: 127px;
+  height: 90px;
   background-color: black;
   color: white;
   display: flex;
@@ -44,13 +44,12 @@ img {
 }
 
 .container {
-  height: 79%;
+  height: 85%;
   border: 1px solid white;
 }
 
 .searchBox {
-  height: 100px;
-  border: 1px solid yellow;
+  height: 85px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +85,7 @@ button img {
 
 .maincontainer {
   border: 1px solid orange;
-  height: 79%;
+  height: 83%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,8 +96,7 @@ button img {
   width: 450px;
   border: 1px solid rgb(189, 20, 48);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .loading {
@@ -118,6 +116,16 @@ button img {
 
 .processing {
   font-size: 2.5rem;
-  color: black;
+  color: white;
   margin: 10px;
+}
+
+.detailsBoxes{
+  padding: 6px;
+  color: white;
+  border: 1px solid yellow;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
