@@ -15,9 +15,10 @@ button[0].addEventListener("click", function () {
     const url =
     `https://weatherapi-com.p.rapidapi.com/current.json?q=${city}%20`;
     get(url);
-    let parentdiv = document.createElement("div");
-    parentdiv.classList.add("weatherdetails");
-    let parentddiv = document.querySelector(".weatherdetails");
+    let parentdiv = document.querySelector(".maincontainer");
+    let newdiv = document.createElement("div");
+    newdiv.classList.add("weatherdetails");
+    // let parentddiv = document.querySelector(".weatherdetails");
     let weatherCity = document.querySelector(".city");
     let City = city.charAt(0).toUpperCase() + city.slice(1);
     weatherCity.innerHTML = `${City} Weather Details`;
