@@ -1,6 +1,6 @@
 let button = document.getElementsByTagName("button");
 let form = document.getElementsByTagName("input");
-
+let weatherElements = document.querySelectorAll(".detailsBoxes");
 
 const options = {
   method: "GET",
@@ -15,14 +15,20 @@ button[0].addEventListener("click", function () {
     const url =
     `https://weatherapi-com.p.rapidapi.com/current.json?q=${city}%20`;
     get(url);
-    let parentdiv = document.querySelector(".weatherdetails");
+    let parentdiv = document.createElement("div");
+    parentdiv.classList.add("weatherdetails");
+    let parentddiv = document.querySelector(".weatherdetails");
+    let weatherCity = document.querySelector(".city");
+    let City = city.charAt(0).toUpperCase() + city.slice(1);
+    weatherCity.innerHTML = `${City} Weather Details`;
     let loadingdiv = document.createElement("div");
     let status = document.createElement("div");
     status.innerHTML = "Processing...";
     status.classList.add("processing");
-    parentdiv.appendChild(status)
-    loadingdiv.classList.add("loading");
-    parentdiv.appendChild(loadingdiv);
+    // parentdiv.style.flexDirection = "row";
+    // parentdiv.appendChild(status)
+    // loadingdiv.classList.add("loading");
+    // parentdiv.appendChild(loadingdiv);
   });
 
 async function get(url) {
@@ -31,15 +37,15 @@ async function get(url) {
     const result = await response.text();
     const data = JSON.parse(result);
     console.log(data);
-    console.log(data.current.cloud);    
-    console.log(data.current.condition.text);    
-    console.log(data.current.dewpoint_c);    
-    console.log(data.current.gust_mph);    
-    console.log(data.current.heatindex_c);    
-    console.log(data.current.humidity);    
-    console.log(data.current.temp_c);    
-    console.log(data.current.precip_mm);    
-    console.log(data.current.wind_mph);    
+    weatherElements[0].innerHTML = `Weather Condition: ${data.current.condition.text}`;
+    weatherElements[1].innerHTML = `DewPoint: ${data.current.dewpoint_c}`;
+    weatherElements[2].innerHTML = `Gust(miles per hour): ${data.current.gust_mph}`;
+    weatherElements[3].innerHTML = `HeatIndex(in celcius): ${data.current.heatindex_c}`;
+    weatherElements[4].innerHTML = `Humidity: ${data.current.humidity}`;
+    weatherElements[5].innerHTML = `Temperature(in celcius): ${data.current.temp_c}`;   
+    weatherElements[6].innerHTML = `Precipitation(in mm): ${data.current.precip_mm}`;
+    weatherElements[7].innerHTML = `Cloud(in atros): ${data.current.cloud}`;
+    weatherElements[8].innerHTML = `Wind Speed(miles per hour): ${data.current.wind_mph}`;
   } catch (error) {
     console.error(error);
   }
