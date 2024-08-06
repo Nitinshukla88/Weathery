@@ -92,7 +92,7 @@ button img {
 }
 
 .weatherdetails {
-  height: 285px;
+  height: 350x;
   width: 450px;
   border: 1px solid rgb(189, 20, 48);
   display: flex;
@@ -121,7 +121,18 @@ button img {
 }
 
 .detailsBoxes{
-  padding: 6px;
+  padding: 7px 15px;
+  color: white;
+  border: 1px solid yellow;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.city{
+  padding: 15px;
+  font-size: 1.7rem;
+  padding: 7px;
   color: white;
   border: 1px solid yellow;
   text-align: center;
