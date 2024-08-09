@@ -45,7 +45,6 @@ img {
 
 .container {
   height: 85%;
-  border: 1px solid white;
 }
 
 .searchBox {
@@ -58,6 +57,7 @@ img {
 input {
   height: 20px;
   width: 265px;
+  border-radius: 7px;
   padding: 20px 15px;
   margin: 20px;
   background-color: #e1d8d8;
@@ -69,6 +69,7 @@ input {
 
 button {
   padding: 9px 12px;
+  border-radius: 7px;
   text-align: center;
   cursor: pointer;
   font-family: "Roboto", sans-serif;
@@ -84,7 +85,6 @@ button img {
 }
 
 .maincontainer {
-  border: 1px solid orange;
   height: 83%;
   display: flex;
   align-items: center;
@@ -94,7 +94,6 @@ button img {
 .weatherdetails {
   height: 350x;
   width: 450px;
-  border: 1px solid rgb(189, 20, 48);
   display: flex;
   flex-direction: column;
 }
@@ -124,20 +123,20 @@ button img {
 }
 
 .detailsBoxes{
-  padding: 7px 15px;
+  height: 35px;
+  text-align: center;
   color: white;
-  border: 1px solid yellow;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
 
 .city{
+  height: 49px;
   padding: 15px;
   font-size: 1.7rem;
   padding: 7px;
   color: white;
-  border: 1px solid yellow;
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-weight: 500;

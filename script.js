@@ -1,6 +1,6 @@
 let button = document.getElementsByTagName("button");
 let form = document.getElementsByTagName("input");
-let weatherElements = document.querySelectorAll(".detailsBoxes");
+let pushed = false;
 
 const options = {
   method: "GET",
@@ -11,47 +11,82 @@ const options = {
 };
 
 button[0].addEventListener("click", function () {
-    let city = form[0].value;
-    const url =
-    `https://weatherapi-com.p.rapidapi.com/current.json?q=${city}%20`;
-    get(url);
-    let parentdiv = document.querySelector(".maincontainer");
-    let newdiv = document.createElement("div");
-    newdiv.classList.add("weatherdetails");
-    // let parentddiv = document.querySelector(".weatherdetails");
-    let weatherCity = document.querySelector(".city");
+  if(pushed == true){
+    document.querySelector(".weatherdetails").remove();
+  }
+  let city = form[0].value;
+  let parentdiv = document.querySelector(".maincontainer");
+  let loadingdiv = document.createElement("div");
+  let status = document.createElement("div");
+  status.innerHTML = "Processing...";
+  status.classList.add("processing");
+  loadingdiv.classList.add("loading");
+  parentdiv.appendChild(status);
+  parentdiv.appendChild(loadingdiv);
+
+  setTimeout(() => {
+    status.remove();
+    loadingdiv.remove();
+    let weather_holder = document.createElement("div");
+    weather_holder.classList.add("weatherdetails");
+    parentdiv.appendChild(weather_holder);
+    pushed = true;
+
+
+    let weatherBox = document.querySelector(".weatherdetails");
+    let weatherCity = document.createElement("div");
+    weatherCity.classList.add("city");
+    weatherBox.appendChild(weatherCity);
     let City = city.charAt(0).toUpperCase() + city.slice(1);
-    weatherCity.innerHTML = `${City} Weather Details`;
-    let loadingdiv = document.createElement("div");
-    let status = document.createElement("div");
-    status.innerHTML = "Processing...";
-    status.classList.add("processing");
-    // parentdiv.style.flexDirection = "row";
-    // parentdiv.appendChild(status)
-    // loadingdiv.classList.add("loading");
-    // parentdiv.appendChild(loadingdiv);
-  });
+    document.querySelector(".city").innerHTML = `${City} Weather Details`;
+    document.querySelector(".city").style.color = "purple";
+
+    // let first_ele = document.createElement("div");
+    // first_ele.classList.add("detailsBoxes");
+    // weatherBox.appendChild(first_ele);
+
+    // let second_ele = document.createElement("div");
+    // second_ele.classList.add("detailsBoxes")
+    for (i = 0; i < 8; i++) {
+      let ele = document.createElement("div");
+      ele.classList.add("detailsBoxes");
+      weatherBox.appendChild(ele);
+    }
+    const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${city}%20`;
+    get(url);
+  }, 2500);
+
+  // let parentdiv = document.querySelector(".maincontainer");
+  // let newdiv = document.createElement("div");
+  // newdiv.classList.add("weatherdetails");
+
+  // let parentddiv = document.querySelector(".weatherdetails");
+  // let weatherCity = document.querySelector(".city");
+
+  // parentdiv.style.flexDirection = "row";
+  // parentdiv.appendChild(status)
+});
 
 async function get(url) {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
     const data = JSON.parse(result);
-    console.log(data);
-    weatherElements[0].innerHTML = `Weather Condition: ${data.current.condition.text}`;
-    weatherElements[1].innerHTML = `DewPoint: ${data.current.dewpoint_c}`;
-    weatherElements[2].innerHTML = `Gust(miles per hour): ${data.current.gust_mph}`;
-    weatherElements[3].innerHTML = `HeatIndex(in celcius): ${data.current.heatindex_c}`;
-    weatherElements[4].innerHTML = `Humidity: ${data.current.humidity}`;
-    weatherElements[5].innerHTML = `Temperature(in celcius): ${data.current.temp_c}`;   
-    weatherElements[6].innerHTML = `Precipitation(in mm): ${data.current.precip_mm}`;
-    weatherElements[7].innerHTML = `Cloud(in atros): ${data.current.cloud}`;
-    weatherElements[8].innerHTML = `Wind Speed(miles per hour): ${data.current.wind_mph}`;
+    let weatherElements = document.querySelectorAll(".detailsBoxes");
+    setTimeout(() => {
+      weatherElements[0].innerHTML = `Weather Condition: ${data.current.condition.text}`;
+      weatherElements[1].innerHTML = `DewPoint: ${data.current.dewpoint_c}`;
+      weatherElements[2].innerHTML = `Gust(miles per hour): ${data.current.gust_mph}`;
+      weatherElements[3].innerHTML = `HeatIndex(in celcius): ${data.current.heatindex_c}`;
+    }, 1000);
+    setTimeout(() => {
+      weatherElements[4].innerHTML = `Humidity: ${data.current.humidity}`;
+      weatherElements[5].innerHTML = `Temperature(in celcius): ${data.current.temp_c}`;
+      weatherElements[6].innerHTML = `Precipitation(in mm): ${data.current.precip_mm}`;
+      weatherElements[7].innerHTML = `Cloud(in atros): ${data.current.cloud}`;
+      weatherElements[8].innerHTML = `Wind Speed(miles per hour): ${data.current.wind_mph}`;
+    }, 2500);
   } catch (error) {
     console.error(error);
   }
 }
-
-
-
-
