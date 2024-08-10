@@ -59,22 +59,22 @@ async function get(url) {
     const result = await response.text();
     const data = JSON.parse(result);
     let weatherElements = document.querySelectorAll(".detailsBoxes");
-    weatherElements[0].innerHTML = `Weather Condition: ${data.current.condition.text}`;
+    weatherElements[0].innerHTML = `Weather condition: <span style="color: purple;">${data.current.condition.text}</span>`;
     setTimeout(() => {
-      weatherElements[1].innerHTML = `DewPoint: ${data.current.dewpoint_c}`;
-      weatherElements[2].innerHTML = `Gust(miles per hour): ${data.current.gust_mph}`;
+      weatherElements[1].innerHTML = `DewPoint: <span style="color: purple;">${data.current.dewpoint_c}</span>`;
+      weatherElements[2].innerHTML = `Gust(miles per hour): <span style="color: purple;">${data.current.gust_mph}</span>`;
     }, 1000);
     setTimeout(() => {
-    weatherElements[3].innerHTML = `HeatIndex(in celcius): ${data.current.heatindex_c}`;
+    weatherElements[3].innerHTML = `HeatIndex(in celcius): <span style="color: purple;">${data.current.heatindex_c}</span>`;
     }, 1500);
     setTimeout(() => {
-      weatherElements[4].innerHTML = `Humidity: ${data.current.humidity}`;
-      weatherElements[5].innerHTML = `Temperature(in celcius): ${data.current.temp_c}`;
+      weatherElements[4].innerHTML = `Humidity: <span style="color: purple;">${data.current.humidity}</span>`;
+      weatherElements[5].innerHTML = `Temperature(in celcius): <span style="color: purple;">${data.current.temp_c}</span>`;
     }, 1800);
     setTimeout(() => {
-      weatherElements[6].innerHTML = `Precipitation(in mm): ${data.current.precip_mm}`;
-      weatherElements[7].innerHTML = `Cloud(in atros): ${data.current.cloud}`;
-      weatherElements[8].innerHTML = `Wind Speed(miles per hour): ${data.current.wind_mph}`;
+      weatherElements[6].innerHTML = `Precipitation(in mm): <span style="color: purple;">${data.current.precip_mm}</span>`;
+      weatherElements[7].innerHTML = `Cloud(in atros): <span style="color: purple;">${data.current.cloud}</span>`;
+      weatherElements[8].innerHTML = `Wind Speed(miles per hour): <span style="color: purple;">${data.current.wind_mph}</span>`;
     }, 2500);
   } catch (error) {
     console.error(error);

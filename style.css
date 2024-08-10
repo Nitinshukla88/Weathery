@@ -79,11 +79,12 @@ input:focus {
 button {
   padding: 10px 14px;
   border-radius: 50px;
+  border: none;
   background: linear-gradient(145deg, #cacaca, #f0f0f0);
-  box-shadow: 5px 5px 10px #b5b5b5, -5px -5px 10px #ffffff;
+  box-shadow: 5px 5px 0px #b5b5b5, -3px -3px 10px #ffffff;
   text-align: center;
   cursor: pointer;
-  outline: none;
+  /* outline: 0; */
 }
 
 button img {
@@ -124,7 +125,7 @@ button img {
   color: black;
   margin: 10px;
   font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -133,7 +134,7 @@ button img {
   text-align: center;
   color: black;
   font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -145,6 +146,6 @@ button img {
   color: white;
   text-align: center;
   font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
 }
