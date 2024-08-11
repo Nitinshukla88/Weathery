@@ -84,7 +84,6 @@ button {
   box-shadow: 5px 5px 0px #b5b5b5, -3px -3px 10px #ffffff;
   text-align: center;
   cursor: pointer;
-  /* outline: 0; */
 }
 
 button img {
